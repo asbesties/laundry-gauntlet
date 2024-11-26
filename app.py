@@ -66,6 +66,9 @@ def all_halls():
         outstr += machine_list(h)
     return outstr
 
+def mach_api(hall):
+    return Hall(hall, [Mach(m["stickerNumber"], m["type"], m["doorClosed"], m["mode"], m["available"], m["notAvailableReason"], m["timeRemaining"]) for m in machines(hall)["machines"]])
+
 @app.route("/save")
 def save_all_halls():
     data[time.time()] = [Hall(h, [Mach(m["stickerNumber"], m["type"], m["doorClosed"], m["mode"], m["available"], m["notAvailableReason"], m["timeRemaining"]) for m in machines(h)["machines"]]) for h in halls.keys()]
