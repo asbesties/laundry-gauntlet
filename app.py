@@ -83,10 +83,10 @@ def machine_list(hall):
     wsum = machines(escape(hall))["availabilitySummary"]["washers"]
     mech = machines(escape(hall))["machines"]
     outstr = styling + f"<div>Machines Available in {hall.title()}:<br>"
-    wstr = f"<br><div>&emsp;Washers:&emsp;({wsum["available"]}/{wsum["available"] + wsum["inUse"] + wsum["temporarilyUnavailable"]})</div>"
-    dstr = f"<br><div>&emsp;Dryers:&emsp;({dsum["available"]}/{dsum["available"] + dsum["inUse"] + dsum["temporarilyUnavailable"]})</div>"
+    wstr = f'<br><div>&emsp;Washers:&emsp;({wsum["available"]}/{wsum["available"] + wsum["inUse"] + wsum["temporarilyUnavailable"]})</div>'
+    dstr = f'<br><div>&emsp;Dryers:&emsp;({dsum["available"]}/{dsum["available"] + dsum["inUse"] + dsum["temporarilyUnavailable"]})</div>'
     for m in sorted(mech, key=lambda x: x["stickerNumber"]):
-        mstring = f"<div>&emsp;&emsp;{m["stickerNumber"]}:&emsp;{((m["mode"] != "running" or m["available"] == True) and m["mode"] != "unknown") * "Available"}{(m["timeRemaining"] > 0) * f"In Use, {m["timeRemaining"]} min left"}{(m["mode"] == "unknown") * "[Unknown State]"}{(m["notAvailableReason"] == "offline") * " [Offline]"}</div>"
+        mstring = f'<div>&emsp;&emsp;{m["stickerNumber"]}:&emsp;{((m["mode"] != "running" or m["available"] == True) and m["mode"] != "unknown") * "Available"}{(m["timeRemaining"] > 0) * f"In Use, {m["timeRemaining"]} min left"}{(m["mode"] == "unknown") * "[Unknown State]"}{(m["notAvailableReason"] == "offline") * " [Offline]"}</div>'
         if (m["type"] == "washer"):
             wstr += mstring
         if (m["type"] == "dryer"):
