@@ -25,7 +25,7 @@ class Mach(object):
         self.timeLeft = timeLeft
     
     def __str__(self) -> str:
-        return f"{self._ty[0]}{self._id}: {self.timeLeft}min {self.doorClosed * "door-closed"} {self.available * "available"} {self.notAvailableReason}"
+        return f'{self._ty[0]}{self._id}: {self.timeLeft}min {self.doorClosed * "door-closed"} {self.available * "available"} {self.notAvailableReason}'
 
 class Hall(object):
     def __init__(self, name:str, machs:list) -> None:
