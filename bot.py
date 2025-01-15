@@ -15,7 +15,9 @@ async def cmd_halls(message, app=app):
 
 async def cmd_hall(message, app=app):
     hall = message.content.split(" ")[1].lower()
-    return (f"Machines in {hall.title()}: {', '.join([str(m['stickerNumber']) for m in app.machines(hall)['machines']])}")
+    outstr = f"Washers in {hall.title()}: {' '.join([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'washer'])}"
+    outstr+= f"Dryers in {hall.title()}: {' '.join([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'dryer'])}"
+    return outstr
 
 async def cmd_time(message, app=app):
     hall = message.content.split(" ")[1].lower()
@@ -26,7 +28,7 @@ async def cmd_api(message, app=app):
     return ("\n".join([f"Raw data from {hall.title()} {m}:```json\n{app.get_mach(int(m), hall)}\n```" for m in message.content.split(' ')[2:]]))
 
 async def cmd_laundry(message, app=app):
-    return "Laundry commands: + '\n'.join(['/' + c for c in cmds.keys()])" + "\nUsage: `/command hall id`\nYou can chain ids like this: `/api barton 220 221 222`"
+    return "Laundry commands:" + '\n'.join(['/' + c for c in cmds.keys()]) + "\nUsage: `/command hall id`\nYou can chain ids like this: `/api barton 220 221 222`"
 
 cmds = {
     "halls": cmd_halls,
