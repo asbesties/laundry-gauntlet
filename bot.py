@@ -50,4 +50,5 @@ async def on_message(message: discord.Message):
             print("[API] >> " + cmdout.replace('\n', '\n[API] >> '))
             await message.channel.send(cmdout)
 
-client.run(token)
+if __name__ == "__main__":
+    client.run(token)
