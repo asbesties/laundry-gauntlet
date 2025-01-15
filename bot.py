@@ -1,4 +1,6 @@
-import app
+try:
+    import app
+except: pass
 import discord
 import os
 
