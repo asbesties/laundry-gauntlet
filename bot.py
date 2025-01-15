@@ -1,6 +1,6 @@
 try:
     import app
-except: pass
+except: app = None
 import discord
 import os
 
