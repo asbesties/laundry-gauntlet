@@ -15,8 +15,8 @@ async def cmd_halls(message, app=app):
 
 async def cmd_hall(message, app=app):
     hall = message.content.split(" ")[1].lower()
-    outstr = f"Washers in {hall.title()}: {' '.join([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'washer'])}"
-    outstr+= f"Dryers in {hall.title()}: {' '.join([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'dryer'])}"
+    outstr = f"Washers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'washer']))}"
+    outstr+= f"\nDryers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'dryer']))}"
     return outstr
 
 async def cmd_time(message, app=app):
