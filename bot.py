@@ -30,10 +30,7 @@ async def cmd_api(message, app=app):
     hall = message.content.split(" ")[1].lower()
     output = ""
     if (hall == "*" or hall == "all"):
-        for h in app.halls.keys():
-            for m in app.machines(h)['machines']:
-                output += f"```json\n{app.get_mach(m['stickerNumber'], h)}\n```\n"
-        return output
+        return "Unimplemented"
     else:
         return ("\n".join([f"Raw data from {hall.title()} {m}:```json\n{app.mach_api(hall)}\n```" for m in message.content.split(' ')[2:]]))
 
