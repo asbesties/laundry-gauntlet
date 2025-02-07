@@ -30,7 +30,11 @@ async def cmd_api(message, app=app):
     hall = message.content.split(" ")[1].lower()
     output = ""
     if (hall == "*" or hall == "all"):
-        return "Unimplemented"
+        #return "Unimplemented"
+        for h in app.halls.keys():
+            for m in message.content.split(' ')[2:]:
+                hall_data = app.mach_api(h)
+                output += f"Raw data from {h.title()} {m}:```\n{hall_data}\n```"
     else:
         #return ("\n".join([f"Raw data from {hall.title()} {m}:```json\n{app.mach_api(hall)}\n```" for m in message.content.split(' ')[2:]]))
         for m in message.content.split(' ')[2:]:
