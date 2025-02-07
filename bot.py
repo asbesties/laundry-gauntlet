@@ -32,7 +32,7 @@ async def cmd_api(message, app=app):
     if (hall == "*" or hall == "all"):
         #return "Unimplemented"
         for h in app.halls.keys():
-            for m in app.machines(hall)['machines']:
+            for m in app.machines(h)['machines']:
                 hall_data = app.mach_api(h)
                 output += f"Raw data from {h.title()} {m}:```\n{hall_data}\n```"
     else:
