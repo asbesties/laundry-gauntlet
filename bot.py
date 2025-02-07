@@ -10,7 +10,7 @@ intents.members = True
 intents.message_content = True
 client: discord.Client = discord.Client(intents=intents)
 
-async def cmd_halls(app=app):
+async def cmd_halls(message, app=app):
     return ("Registered halls: " + ", ".join(app.halls.keys()))
 
 async def cmd_hall(message, app=app):
