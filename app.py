@@ -11,9 +11,9 @@ api = "https://mycscgo.com/api/v3/machine/info/"
 
 halls:dict = {\
 "barton": "951c9953-0c62-4c0a-b57b-e93da388bad6",
+"crockett": "2531553f-e5ac-4b97-aa85-39d437cc6a1a",
 "hall": "94808e51-2044-4441-9b99-391c52dcdb32",
-"nason": "5aaa2c7a-7928-4103-9cec-755687952805",
-"crockett": "2531553f-e5ac-4b97-aa85-39d437cc6a1a"
+"nason": "5aaa2c7a-7928-4103-9cec-755687952805"
 }
 
 class Mach(object):

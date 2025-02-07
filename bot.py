@@ -28,6 +28,8 @@ async def cmd_time(message, app=app):
 
 async def cmd_api(message, app=app):
     hall = message.content.split(" ")[1].lower()
+    if (hall == "*" or hall == "all"):
+        return ("\n".join([f"Raw data from {h.title()}:```json\n{app.machines(h)}\n```" for h in app.halls.keys()]))
     return ("\n".join([f"Raw data from {hall.title()} {m}:```json\n{app.get_mach(int(m), hall)}\n```" for m in message.content.split(' ')[2:]]))
 
 async def cmd_laundry(message, app=app):
