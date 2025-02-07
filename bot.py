@@ -34,8 +34,9 @@ async def cmd_api(message, app=app):
     else:
         #return ("\n".join([f"Raw data from {hall.title()} {m}:```json\n{app.mach_api(hall)}\n```" for m in message.content.split(' ')[2:]]))
         for m in message.content.split(' ')[2:]:
-            output += f"Raw data from {hall.title()} {m}:```json\n{app.mach_api(hall).get_mach(int(m))}\n```"
-    return output
+            hall_data = app.mach_api(hall)
+            output += f"Raw data from {hall.title()} {m}:```\n{hall_data}\n```"
+        return output
 
 async def cmd_laundry(message, app=app):
     return "Laundry commands:" + '\n'.join(['/' + c for c in cmds.keys()]) + "\nUsage: `/command hall id`\nYou can chain ids like this: `/api barton 220 221 222`"
