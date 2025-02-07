@@ -14,7 +14,10 @@ async def cmd_halls(message, app=app):
     return ("Registered halls: " + ", ".join(app.halls.keys()))
 
 async def cmd_hall(message, app=app):
-    hall = message.content.split(" ")[1].lower()
+    try:
+        hall = message.content.split(" ")[1].lower()
+    except IndexError:
+        return "Error: Please specify a hall."
     outstr = f"Washers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'washer']))}"
     outstr+= f"\nDryers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'dryer']))}"
     return outstr
