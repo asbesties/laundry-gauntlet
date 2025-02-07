@@ -34,7 +34,7 @@ async def cmd_api(message, app=app):
         for h in app.halls.keys():
             for m in app.machines(h)['machines']:
                 hall_data = app.mach_api(h)
-                output += f"Raw data from {h.title()} {m}:```\n{hall_data}\n```"
+                message.channel.send(f"Raw data from {h.title()} {m}:```\n{hall_data}\n```")
     else:
         #return ("\n".join([f"Raw data from {hall.title()} {m}:```json\n{app.mach_api(hall)}\n```" for m in message.content.split(' ')[2:]]))
         for m in message.content.split(' ')[2:]:
