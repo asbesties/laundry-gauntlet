@@ -30,18 +30,23 @@ async def cmd_api(message, app=app):
     hall = message.content.split(" ")[1].lower()
     output = []
     if (hall == "*" or hall == "all"):
-        #return "Unimplemented"
         for h in app.halls.keys():
             for m in app.machines(h)['machines']:
                 hall_data = app.mach_api(h)
                 output.append(f"Raw data from {h.title()} {m}:```\n{hall_data}\n```")
         return output
-    else:
-        #return ("\n".join([f"Raw data from {hall.title()} {m}:```json\n{app.mach_api(hall)}\n```" for m in message.content.split(' ')[2:]]))
-        for m in message.content.split(' ')[2:]:
-            hall_data = app.mach_api(hall)
-            output.append(f"Raw data from {hall.title()} {m}:```\n{hall_data}\n```")
+    elif (hall in app.halls.keys()):
+        if (len(message.content.split(' ')) == 2):
+            for m in message.content.split(' ')[2:]:
+                hall_data = app.mach_api(hall)
+                output.append(f"Raw data from {hall.title()} {m}:```\n{hall_data}\n```")
+        else:
+            for m in app.machines(hall)['machines']:
+                hall_data = app.mach_api(hall)
+                output.append(f"Raw data from {hall.title()} {m}:```\n{hall_data}\n```")
         return output
+    else:
+        return "Error: Invalid hall"
 
 async def cmd_laundry(message, app=app):
     return "Laundry commands:" + '\n'.join(['/' + c for c in cmds.keys()]) + "\nUsage: `/command hall id`\nYou can chain ids like this: `/api barton 220 221 222`"
