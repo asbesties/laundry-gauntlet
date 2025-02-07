@@ -28,18 +28,18 @@ async def cmd_time(message, app=app):
 
 async def cmd_api(message, app=app):
     hall = message.content.split(" ")[1].lower()
-    output = ""
+    output = []
     if (hall == "*" or hall == "all"):
         #return "Unimplemented"
         for h in app.halls.keys():
             for m in app.machines(h)['machines']:
                 hall_data = app.mach_api(h)
-                message.channel.send(f"Raw data from {h.title()} {m}:```\n{hall_data}\n```")
+                output.append(f"Raw data from {h.title()} {m}:```\n{hall_data}\n```")
     else:
         #return ("\n".join([f"Raw data from {hall.title()} {m}:```json\n{app.mach_api(hall)}\n```" for m in message.content.split(' ')[2:]]))
         for m in message.content.split(' ')[2:]:
             hall_data = app.mach_api(hall)
-            output += f"Raw data from {hall.title()} {m}:```\n{hall_data}\n```"
+            output.append(f"Raw data from {hall.title()} {m}:```\n{hall_data}\n```")
         return output
 
 async def cmd_laundry(message, app=app):
