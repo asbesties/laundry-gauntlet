@@ -49,7 +49,7 @@ async def cmd_api(message, app=app):
         return "Error: Invalid hall"
 
 async def cmd_laundry(message, app=app):
-    return "Laundry commands:" + '\n'.join(['/' + c for c in cmds.keys()]) + "\nUsage: `/command hall id`\nYou can chain ids like this: `/api barton 220 221 222`"
+    return "Laundry commands:" + '\n'.join(['a!' + c for c in cmds.keys()]) + "\nUsage: `a!command hall id`\nYou can chain ids like this: `a!api barton 220 221 222`"
 
 cmds = {
     "halls": cmd_halls,
@@ -65,8 +65,8 @@ async def on_ready():
 
 @client.event
 async def on_message(message: discord.Message):
-    if message.content.startswith("/"):
-        cmd = message.content.strip("/").split(" ")[0]
+    if message.content.startswith("a!"):
+        cmd = message.content.strip("a!").split(" ")[0]
         if cmd in cmds:
             print(f"[CMD] @{message.author} used {message.content}")
             cmdout = await cmds[cmd](message)
