@@ -10,6 +10,11 @@ intents.members = True
 intents.message_content = True
 client: discord.Client = discord.Client(intents=intents)
 
+def report_hall(hall)
+    outstr = f"Washers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'washer']))}"
+    outstr+= f"\nDryers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'dryer']))}"
+    return outstr
+
 async def cmd_halls(message, app=app):
     return ("Registered halls: " + ", ".join(app.halls.keys()))
 
@@ -18,14 +23,18 @@ async def cmd_hall(message, app=app):
         hall = message.content.split(" ")[1].lower()
     except IndexError:
         return "Error: Please specify a hall."
-    outstr = f"Washers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'washer']))}"
-    outstr+= f"\nDryers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'dryer']))}"
+    if hall == '*':
+        for h in app.halls.keys():
+            outstr += report_hall(h)
+    else:
+        outstr += report_hall(hall)
     return outstr
 
 async def cmd_time(message, app=app):
     hall = message.content.split(" ")[1].lower()
     return ("\n".join([f"{app.get_mach(int(m), hall)['timeRemaining']} mins on {hall.title()} {m}" for m in message.content.split(' ')[2:]]))
 
+# PRASHANT WHAT DID YOU DO
 async def cmd_api(message, app=app):
     hall = message.content.split(" ")[1].lower()
     output = []
