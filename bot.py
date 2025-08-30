@@ -10,7 +10,7 @@ intents.members = True
 intents.message_content = True
 client: discord.Client = discord.Client(intents=intents)
 
-def report_hall(hall)
+def report_hall(hall):
     outstr = f"Washers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'washer']))}"
     outstr+= f"\nDryers in {hall.title()}: {' '.join(sorted([str(m['stickerNumber']) for m in app.machines(hall)['machines'] if m['type'] == 'dryer']))}"
     return outstr
