@@ -23,6 +23,7 @@ async def cmd_hall(message, app=app):
         hall = message.content.split(" ")[1].lower()
     except IndexError:
         return "Error: Please specify a hall."
+    outstr = ""
     if hall == '*':
         for h in app.halls.keys():
             outstr += report_hall(h)
