@@ -49,7 +49,7 @@ async def cmd_api(message, app=app):
         return "Error: Invalid hall"
 
 async def cmd_laundry(message, app=app):
-    return "Laundry commands:" + '\n'.join(['a!' + c for c in cmds.keys()]) + "\nUsage: `a!command hall id`\nYou can chain ids like this: `a!api barton 220 221 222`"
+    return "Laundry commands:\n" + '\n'.join(['a!' + c for c in cmds.keys()]) + "\nUsage: `a!command hall id`\nYou can chain ids like this: `a!api barton 220 221 222`"
 
 cmds = {
     "halls": cmd_halls,
