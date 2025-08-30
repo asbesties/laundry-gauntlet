@@ -19,7 +19,8 @@ halls:dict = {\
 "nason": "5aaa2c7a-7928-4103-9cec-755687952805",
 "nugent": "62c3b774-6745-4d5a-a997-5132b510bb2a",
 "warren": "2cc3c4ef-bb23-429a-a8a8-3c5388c12b04",
-"quad": "42a5885d-aaa7-490b-a8c5-9b67a7d8c14d"
+"quad": "42a5885d-aaa7-490b-a8c5-9b67a7d8c14d",
+"rhaps-b": "ddfd99ab-dac6-4d90-b333-8a2ff14a8ab1"
 }
 
 class Mach(object):
