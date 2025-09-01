@@ -3,8 +3,8 @@ from markupsafe import escape
 import pickle, time
 from datetime import datetime
 from flask import *
-from data import *
-from ifaces import *
+from gaunt_data import *
+from gaunt_ifaces import *
 
 app = Flask(__name__)
 

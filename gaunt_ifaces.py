@@ -1,7 +1,7 @@
 from requests import get
 from json import loads
 from markupsafe import escape
-from data import *
+from gaunt_data import *
 
 class Mach(object):
     def __init__(self, _id:int, _type:str, doorClosed:bool, mode:str, available:bool, notAvailableReason:str, timeLeft:int) -> None:
