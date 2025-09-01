@@ -1,4 +1,3 @@
-import data
 import discord
 import os
 import data
