@@ -9,7 +9,8 @@ halls:dict = {
     "nugent": "62c3b774-6745-4d5a-a997-5132b510bb2a",
     "warren": "2cc3c4ef-bb23-429a-a8a8-3c5388c12b04",
     "quad": "42a5885d-aaa7-490b-a8c5-9b67a7d8c14d",
-    "rhaps-b": "ddfd99ab-dac6-4d90-b333-8a2ff14a8ab1"
+    "rahps-a": "af63f0f3-4e6a-42e6-a3fa-481972192c5f",
+    "rahps-b": "ddfd99ab-dac6-4d90-b333-8a2ff14a8ab1"
 }
 
 api = "https://mycscgo.com/api/v3/machine/info/"
